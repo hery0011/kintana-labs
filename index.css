@@ -428,3 +428,74 @@ footer {
 @media (max-width: 480px) {
     h2 { font-size: 2.2rem; }
 }
+
+
+/* FLOATING SOCIAL ICONS */
+#social-float {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transform: translateY(-50%);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+#social-float.show {
+    opacity: 1;
+}
+
+#social-float .social-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-cyan);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, background 0.3s;
+}
+
+#social-float .social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: var(--accent-yellow);
+}
+
+/* MICRO-ANIMATIONS FOR BUTTONS */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 0;
+    top: 0;
+    left: -10%;
+    background: rgba(255,255,255,0.2);
+    transform: skewX(-25deg);
+    transition: all 0.5s;
+}
+
+.btn:hover::before {
+    height: 300%;
+    top: -100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* SMOOTH SCROLL FOR LINKS */
+html {
+    scroll-behavior: smooth;
+}

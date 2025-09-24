@@ -22,3 +22,14 @@ window.addEventListener('scroll', () => {
     let offset = window.scrollY;
     headerBg.style.transform = `translateY(${offset * 0.5}px)`;
 });
+
+// Floating social icons on scroll
+const socialFloat = document.getElementById('social-float');
+
+window.addEventListener('scroll', () => {
+    if(window.scrollY > 400){ // tu peux ajuster la distance
+        socialFloat.classList.add('show');
+    } else {
+        socialFloat.classList.remove('show');
+    }
+});
