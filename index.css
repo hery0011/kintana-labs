@@ -289,6 +289,7 @@ header {
 .service-card:hover i { color: var(--accent-yellow); }
 
 /* PORTFOLIO SECTION */
+
 #portfolio { background: var(--bg-light); }
 
 .portfolio {
@@ -339,6 +340,68 @@ header {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* PORTFOLIO HORIZONTAL */
+#portfolio .portfolio {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch; /* pour iOS */
+}
+
+#portfolio .portfolio::-webkit-scrollbar {
+    height: 10px;
+}
+
+#portfolio .portfolio::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 5px;
+}
+
+#portfolio .portfolio::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+}
+
+#portfolio .portfolio .card {
+    flex: 0 0 300px; /* largeur des cartes */
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#portfolio .portfolio .card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* PORTFOLIO HORIZONTAL - RESPONSIVE */
+@media (max-width: 1024px) {
+    #portfolio .portfolio .card {
+        flex: 0 0 250px; /* cartes plus petites sur tablette */
+    }
+}
+
+@media (max-width: 768px) {
+    #portfolio .portfolio {
+        gap: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #portfolio .portfolio .card {
+        flex: 0 0 220px; /* cartes plus petites sur smartphone */
+    }
+}
+
+@media (max-width: 480px) {
+    #portfolio .portfolio .card {
+        flex: 0 0 180px; /* encore plus petites pour les petits écrans */
+    }
+}
+
+
 
 /* CONTACT SECTION */
 #contact { background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)); color:white; }

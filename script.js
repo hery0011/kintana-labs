@@ -33,3 +33,47 @@ window.addEventListener('scroll', () => {
         socialFloat.classList.remove('show');
     }
 });
+
+// Scroll horizontal portfolio avec molette
+const portfolio = document.querySelector('#portfolio .portfolio');
+portfolio.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    portfolio.scrollBy({
+        left: e.deltaY < 0 ? -100 : 100,
+        behavior: 'smooth'
+    });
+});
+
+// Swipe mobile pour portfolio
+let isDown = false;
+let startX;
+let scrollLeft;
+
+const portfolioSection = document.querySelector('#portfolio .portfolio');
+
+portfolioSection.addEventListener('mousedown', (e) => {
+    isDown = true;
+    portfolioSection.classList.add('active');
+    startX = e.pageX - portfolioSection.offsetLeft;
+    scrollLeft = portfolioSection.scrollLeft;
+});
+
+portfolioSection.addEventListener('mouseleave', () => {
+    isDown = false;
+    portfolioSection.classList.remove('active');
+});
+
+portfolioSection.addEventListener('mouseup', () => {
+    isDown = false;
+    portfolioSection.classList.remove('active');
+});
+
+portfolioSection.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - portfolioSection.offsetLeft;
+    const walk = (x - startX) * 2; // vitesse
+    portfolioSection.scrollLeft = scrollLeft - walk;
+});
+
+
