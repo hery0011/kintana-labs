@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kintana Labs - Développement Web & Mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLpQpA1q7j/g5L8n458jFh7f68X9eX0cT0v81X68t1f8+0653g6b4z5e6f5c8f8b8a5d6c5c6d5e7d8f9b9f5e9d8e5f5e9d9e9c9c8c7c9c9c9c9c9c9c9" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* VARIABLES & RESET */
+    :root {
+      --primary-dark: #0a3d62;
+      --primary-blue: #1b6ca8;
+      --accent-cyan: #00aaff;
+      --accent-yellow: #ffc107;
+      --bg-light: #f4f7f9;
+      --text-dark: #333;
+      --text-light: #fcfcfc;
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Lato', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* GENERAL STYLES */
+    section {
+      min-height: 100vh;
+      padding: 100px 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+      letter-spacing: -1px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--accent-cyan);
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      background: var(--accent-yellow);
+      color: var(--primary-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #e6a800;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 61, 98, 0.9);
+      backdrop-filter: blur(8px);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 61, 98, 0.95);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    nav .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--accent-cyan);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* HEADER */
+    header {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover fixed;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 61, 98, 0.75);
+      z-index: 0;
+    }
+
+    header h1, header p, header .btn {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: clamp(3rem, 7vw, 5rem);
+      margin-bottom: 20px;
+      animation: fadeInDown 1.5s ease;
+      color: var(--text-light);
+    }
+
+    header p {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      margin-bottom: 40px;
+      animation: fadeInUp 2s ease;
+      font-weight: 300;
+    }
+
+    /* ABOUT SECTION */
+    #about {
+      background: var(--bg-light);
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .about-text {
+      flex: 1 1 500px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .about-text strong {
+      color: var(--primary-blue);
+    }
+
+    .about-text p:first-of-type {
+      margin-bottom: 20px;
+    }
+
+    .about-text ul {
+      margin-top: 25px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-text ul li {
+      margin: 12px 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-dark);
+    }
+    
+    .about-text ul li i {
+      color: var(--accent-cyan);
+      font-size: 1.2rem;
+    }
+
+    .about-image {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .about-image img:hover {
+      transform: scale(1.02);
+    }
+
+    /* SERVICES SECTION */
+    #services {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+    }
+
+    #services h2 {
+      color: var(--text-light);
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 30px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .service-card i {
+      font-size: 3.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 25px;
+      transition: color 0.3s ease;
+    }
+
+    .service-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .service-card .btn {
+      background: var(--accent-cyan);
+      color: white;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .service-card:hover i {
+      color: var(--accent-yellow);
+    }
+
+    /* PORTFOLIO SECTION */
+    #portfolio {
+      background: var(--bg-light);
+    }
+    
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .portfolio .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .portfolio .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .portfolio .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio .card-content {
+      padding: 30px;
+    }
+
+    .portfolio .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: var(--primary-dark);
+    }
+
+    .portfolio .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* CONTACT SECTION */
+    #contact {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+    }
+
+    #contact h2 {
+      color: var(--text-light);
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      padding: 60px;
+      text-align: center;
+      color: var(--text-light);
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-card h3 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--accent-yellow);
+    }
+
+    .contact-card .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      font-weight: 300;
+      color: #eee;
+    }
+
+    .contact-info {
+      margin-bottom: 30px;
+    }
+
+    .contact-info p {
+      margin: 15px 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      font-weight: 400;
+    }
+
+    .contact-info i {
+      color: var(--accent-cyan);
+      font-size: 1.5rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .social-links a {
+      text-decoration: none;
+      background: var(--text-light);
+      color: var(--primary-dark);
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .social-links a:hover {
+      background: var(--accent-cyan);
+      color: var(--text-light);
+      transform: translateY(-3px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--primary-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+   /* RESPONSIVE */
+    @media (max-width: 1200px) {
+      /* Ajustement pour les grands écrans/tablettes en mode paysage */
+      .services-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Ajustement pour les tablettes et smartphones */
+      nav {
+        padding: 15px 5%;
+      }
+      nav ul {
+        display: none;
+      }
+      header h1 {
+        font-size: 2.8rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      .about-container {
+        flex-direction: column;
+      }
+      .about-image {
+        order: -1;
+      }
+      .contact-card {
+        padding: 40px;
+      }
+      .contact-card h3 {
+        font-size: 2rem;
+      }
+      /* C'est ici que la section des services est corrigée pour mobile */
+      .services-container, .portfolio {
+        grid-template-columns: 1fr; /* Une seule colonne par ligne */
+      }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Kintana Labs</div>
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Kintana Labs</h1>
+    <p>Experts en développement web & mobile sur mesure.</p>
+    <a href="#services" class="btn">Découvrir nos services</a>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2>À propos de nous</h2>
+      <div class="about-container">
+        <div class="about-text">
+          <p>
+            Chez <strong>Kintana Labs</strong>, nous transformons vos idées en solutions numériques percutantes. Notre expertise en développement web et mobile nous permet de créer des applications sur mesure, modernes et hautement performantes.
+          </p>
+          <p>
+            Nous adoptons une approche agile, plaçant l'utilisateur au centre de chaque projet pour garantir une expérience fluide, intuitive et mémorable.
+          </p>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Développement sur mesure et évolutif</li>
+            <li><i class="fas fa-check-circle"></i> Méthodologie agile et collaborative</li>
+            <li><i class="fas fa-check-circle"></i> Support technique et maintenance</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Notre équipe en action">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Nos Services</h2>
+      <div class="services-container">
+        <div class="service-card">
+          <i class="fas fa-code"></i>
+          <h3>Développement Web</h3>
+          <p>
+            Conception de sites vitrine, plateformes e-commerce et applications web sur mesure avec les dernières technologies (React, Vue, Laravel...).
+          </p>
+          <a href="#portfolio" class="btn">Voir nos projets</a>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Développement Mobile</h3>
+          <p>
+            Création d'applications mobiles natives et hybrides pour iOS et Android, offrant une expérience utilisateur fluide et intuitive.
+          </p>
+          <a href="#contact" class="btn">Demander un devis</a>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-server"></i>
+          <h3>Solutions Cloud</h3>
+          <p>
+            Mise en place et gestion de solutions d'hébergement cloud et de services SaaS pour une scalabilité et une sécurité optimales.
+          </p>
+          <a href="#contact" class="btn">Nous contacter</a>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Conseil Stratégique</h3>
+          <p>
+            Accompagnement de votre entreprise dans la définition de sa stratégie digitale et l'innovation de ses projets technologiques.
+          </p>
+          <a href="#about" class="btn">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="container">
+      <h2>Projets récents</h2>
+      <div class="portfolio">
+        <div class="card">
+          <img src="https://source.unsplash.com/600x400/?law,justice" alt="Site web Ordre des avocats">
+          <div class="card-content">
+            <h3>Site web Ordre des avocats</h3>
+            <p>Conception et développement d’un site vitrine moderne et responsive pour une institution juridique.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/600x400/?finance,bank" alt="Workflow prêt bancaire">
+          <div class="card-content">
+            <h3>Plateforme de prêts bancaires</h3>
+            <p>Application interne pour optimiser et automatiser la gestion des demandes de prêts.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/600x400/?ecommerce,delivery" alt="E-commerce DEEPOZ">
+          <div class="card-content">
+            <h3>E-commerce DEEPOZ</h3>
+            <p>Développement d'une solution de vente en ligne complète avec gestion de la logistique et de la livraison.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://source.unsplash.com/600x400/?data,technology" alt="Saisie de données">
+          <div class="card-content">
+            <h3>Application de saisie de données</h3>
+            <p>Création d’une application sécurisée et performante pour la gestion de bases de données volumineuses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contactez-nous</h2>
+      <div class="contact-card">
+        <h3>Kintana Labs</h3>
+        <p class="subtitle">Nous sommes à votre écoute pour concrétiser vos projets.</p>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Antananarivo, Madagascar</p>
+          <p><i class="fas fa-phone"></i> +261 34 12 345 67</p>
+          <p><i class="fas fa-envelope"></i> contact@kintanalabs.com</p>
+          <p><i class="fas fa-globe"></i> www.kintanalabs.com</p>
+        </div>
+        <div class="social-links">
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+          <a href="#">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Kintana Labs. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // Ajout d'une classe au nav au scroll
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
