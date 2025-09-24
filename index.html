@@ -1,187 +1,163 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kintana Labs - Développement Web & Mobile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLpQpA1q7j/g5L8n458jFh7f68X9eX0cT0v81X68t1f8+0653g6b4z5e6f5c8f8b8a5d6c5c6d5e7d8f9b9f5e9d8e5f5e9d9e9c9c8c7c9c9c9c9c9c9c9"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
 
-    <nav>
-        <div class="logo">Kintana Labs</div>
-        <ul>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<!-- NAVIGATION -->
+<nav>
+    <div class="logo">Kintana Labs</div>
+    <ul>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
 
-    <header>
-        <h1>Kintana Labs</h1>
-        <p>Experts en développement web & mobile sur mesure.</p>
-        <a href="#services" class="btn">Découvrir nos services</a>
-    </header>
+<!-- HEADER -->
+<header>
+    <div class="header-bg"></div>
+    <h1 class="header-title">Kintana Labs</h1>
+    <p class="header-subtitle">Experts en développement web & mobile sur mesure.</p>
+    <a href="#services" class="btn header-btn">Découvrir nos services</a>
+</header>
 
-    <section id="about">
-        <div class="container">
-            <h2>À propos de nous</h2>
-            <div class="about-container">
-                <div class="about-text">
-                    <p>
-                        Chez <strong>Kintana Labs</strong>, nous transformons vos idées en solutions numériques
-                        percutantes. Notre expertise en développement web et mobile nous permet de créer des
-                        applications sur mesure, modernes et hautement performantes.
-                    </p>
-                    <p>
-                        Nous adoptons une approche agile, plaçant l'utilisateur au centre de chaque projet pour garantir
-                        une expérience fluide, intuitive et mémorable.
-                    </p>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Développement sur mesure et évolutif</li>
-                        <li><i class="fas fa-check-circle"></i> Méthodologie agile et collaborative</li>
-                        <li><i class="fas fa-check-circle"></i> Support technique et maintenance</li>
-                    </ul>
+<!-- ABOUT SECTION -->
+<section id="about">
+    <div class="container fade-in">
+        <h2>À propos de nous</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Chez <strong>Kintana Labs</strong>, nous transformons vos idées en solutions numériques percutantes. Notre expertise en développement web et mobile nous permet de créer des applications sur mesure, modernes et hautement performantes.</p>
+                <p>Nous adoptons une approche agile, plaçant l'utilisateur au centre de chaque projet pour garantir une expérience fluide, intuitive et mémorable.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Développement sur mesure et évolutif</li>
+                    <li><i class="fas fa-check-circle"></i> Méthodologie agile et collaborative</li>
+                    <li><i class="fas fa-check-circle"></i> Support technique et maintenance</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Notre équipe en action">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+    <div class="container">
+        <h2 class="fade-in">Nos Services</h2>
+        <div class="services-container">
+            <div class="service-card fade-in">
+                <i class="fas fa-code"></i>
+                <h3>Développement Web</h3>
+                <p>Conception de sites vitrine, plateformes e-commerce et applications web sur mesure avec les dernières technologies (React, Vue, Laravel...).</p>
+                <a href="#portfolio" class="btn">Voir nos projets</a>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Développement Mobile</h3>
+                <p>Création d'applications mobiles natives et hybrides pour iOS et Android, offrant une expérience utilisateur fluide et intuitive.</p>
+                <a href="#contact" class="btn">Demander un devis</a>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-server"></i>
+                <h3>Solutions Cloud</h3>
+                <p>Mise en place et gestion de solutions d'hébergement cloud et de services SaaS pour une scalabilité et une sécurité optimales.</p>
+                <a href="#contact" class="btn">Nous contacter</a>
+            </div>
+            <div class="service-card fade-in">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Conseil Stratégique</h3>
+                <p>Accompagnement de votre entreprise dans la définition de sa stratégie digitale et l'innovation de ses projets technologiques.</p>
+                <a href="#about" class="btn">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO SECTION -->
+<section id="portfolio">
+    <div class="container fade-in">
+        <h2>Projets récents</h2>
+        <div class="portfolio">
+            <div class="card">
+                <img src="https://media.istockphoto.com/id/1403374478/fr/photo/les-concepts-de-justice-et-les-avocats-discutent-de-la-paperasse-contractuelle-avec-des.jpg?b=1&s=170667a&w=0&k=20&c=Gc8fZAt2BtBWlqHCHyiHLABOZOKYlojt8JYymwvm7T4=" alt="Site web Ordre des avocats">
+                <div class="card-content">
+                    <h3>Site web Ordre des avocats</h3>
+                    <p>Conception et développement d’un site vitrine moderne et responsive pour une institution juridique.</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                        alt="Notre équipe en action">
+            </div>
+            <div class="card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.a6Ld2_tIUTEMXinXWaXM-gHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Workflow prêt bancaire">
+                <div class="card-content">
+                    <h3>Plateforme de prêts bancaires</h3>
+                    <p>Application interne pour optimiser et automatiser la gestion des demandes de prêts.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://img.freepik.com/free-photo/showing-cart-trolley-shopping-online-sign-graphic_53876-133967.jpg" alt="E-commerce DEEPOZ">
+                <div class="card-content">
+                    <h3>E-commerce DEEPOZ</h3>
+                    <p>Développement d'une solution de vente en ligne complète avec gestion de la logistique et de la livraison.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.dNjzhOo5XOKdXrTD2dYEpgHaE7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Saisie de données">
+                <div class="card-content">
+                    <h3>Application de saisie de données</h3>
+                    <p>Création d’une application sécurisée et performante pour la gestion de bases de données volumineuses.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="services">
-        <div class="container">
-            <h2>Nos Services</h2>
-            <div class="services-container">
-                <div class="service-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Développement Web</h3>
-                    <p>
-                        Conception de sites vitrine, plateformes e-commerce et applications web sur mesure avec les
-                        dernières technologies (React, Vue, Laravel...).
-                    </p>
-                    <a href="#portfolio" class="btn">Voir nos projets</a>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Développement Mobile</h3>
-                    <p>
-                        Création d'applications mobiles natives et hybrides pour iOS et Android, offrant une expérience
-                        utilisateur fluide et intuitive.
-                    </p>
-                    <a href="#contact" class="btn">Demander un devis</a>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-server"></i>
-                    <h3>Solutions Cloud</h3>
-                    <p>
-                        Mise en place et gestion de solutions d'hébergement cloud et de services SaaS pour une
-                        scalabilité et une sécurité optimales.
-                    </p>
-                    <a href="#contact" class="btn">Nous contacter</a>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Conseil Stratégique</h3>
-                    <p>
-                        Accompagnement de votre entreprise dans la définition de sa stratégie digitale et l'innovation
-                        de ses projets technologiques.
-                    </p>
-                    <a href="#about" class="btn">En savoir plus</a>
-                </div>
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <div class="container fade-in">
+        <h2 class="fade-in">Contactez-nous</h2>
+        <div class="contact-card fade-in">
+            <h3>Kintana Labs</h3>
+            <p class="subtitle">Nous sommes à votre écoute pour concrétiser vos projets.</p>
+            
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> Antananarivo, Madagascar</p>
+                <p><i class="fas fa-phone"></i> +261 34 12 345 67</p>
+                <p><i class="fas fa-envelope"></i> contact@kintanalabs.com</p>
+                <p><i class="fas fa-globe"></i> www.kintanalabs.com</p>
+            </div>
+
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Votre nom" required>
+                <input type="email" name="email" placeholder="Votre email" required>
+                <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
+
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="portfolio">
-        <div class="container">
-            <h2>Projets récents</h2>
-            <div class="portfolio">
-                <div class="card">
-                    <img src="https://source.unsplash.com/600x400/?law,justice" alt="Site web Ordre des avocats">
-                    <div class="card-content">
-                        <h3>Site web Ordre des avocats</h3>
-                        <p>Conception et développement d’un site vitrine moderne et responsive pour une institution
-                            juridique.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/600x400/?finance,bank" alt="Workflow prêt bancaire">
-                    <div class="card-content">
-                        <h3>Plateforme de prêts bancaires</h3>
-                        <p>Application interne pour optimiser et automatiser la gestion des demandes de prêts.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/600x400/?ecommerce,delivery" alt="E-commerce DEEPOZ">
-                    <div class="card-content">
-                        <h3>E-commerce DEEPOZ</h3>
-                        <p>Développement d'une solution de vente en ligne complète avec gestion de la logistique et de
-                            la livraison.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/600x400/?data,technology" alt="Saisie de données">
-                    <div class="card-content">
-                        <h3>Application de saisie de données</h3>
-                        <p>Création d’une application sécurisée et performante pour la gestion de bases de données
-                            volumineuses.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 Kintana Labs. Tous droits réservés.</p>
+</footer>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contactez-nous</h2>
-            <div class="contact-card">
-                <h3>Kintana Labs</h3>
-                <p class="subtitle">Nous sommes à votre écoute pour concrétiser vos projets.</p>
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Antananarivo, Madagascar</p>
-                    <p><i class="fas fa-phone"></i> +261 34 12 345 67</p>
-                    <p><i class="fas fa-envelope"></i> contact@kintanalabs.com</p>
-                    <p><i class="fas fa-globe"></i> www.kintanalabs.com</p>
-                </div>
-                <div class="social-links">
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">Facebook</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Kintana Labs. Tous droits réservés.</p>
-    </footer>
-
-    <script>
-        // Ajout d'une classe au nav au scroll
-        window.addEventListener('scroll', function () {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
