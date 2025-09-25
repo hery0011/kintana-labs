@@ -556,9 +556,42 @@ footer {
 .btn:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 /* SMOOTH SCROLL FOR LINKS */
 html {
     scroll-behavior: smooth;
 }
+
+/* style du textarea pour obtenir l'apparence souhaitée */
+    .message {
+      width: 100%;
+      min-height: 120px;      /* hauteur initiale : augmente si tu veux plus haut */
+      max-height: 600px;      /* limite l'expansion verticale */
+      resize: both;           /* permet redimensionner horizontal+vertical */
+      padding: 18px 20px;     /* espace interne pour que le texte ne touche pas les bords */
+      border-radius: 8px;     /* coins arrondis (comme sur ton image) */
+      border: 1px solid #e6edf2; /* bord léger */
+      background: #ffffff;    /* fond blanc */
+      font-family: "Courier New", Courier, monospace; /* placeholder monospace comme sur l'image */
+      font-size: 14px;
+      line-height: 1.4;
+      color: #222;
+      outline: none;
+      box-shadow: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    /* style focus pour joli effet quand on clique */
+    .message:focus {
+      border-color: #2a9fd6;
+      box-shadow: 0 0 0 6px rgba(42,159,214,0.07);
+    }
+
+    /* placeholder gris */
+    .message::placeholder {
+      color: #9aa7b2;
+      opacity: 1;
+    }

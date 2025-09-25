@@ -14,8 +14,8 @@
 
 <div id="social-float">
     <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
 </div>
 
 <!-- NAVIGATION -->
@@ -143,17 +143,26 @@
                 <p><i class="fas fa-globe"></i> www.kintanalabs.com</p>
             </div>
 
-            <form action="#" method="POST">
-                <input type="text" name="name" placeholder="Votre nom" required>
-                <input type="email" name="email" placeholder="Votre email" required>
-                <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-                <button type="submit" class="btn">Envoyer</button>
+            <form class="row g-3" id="contact-form">
+                <div class="col-md-6">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
+                </div>
+                <div class="col-md-6">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="col-md-6">
+                    <textarea id="message" class="message" placeholder="Votre message" name="message"></textarea>
+                </div>
+                
+                <div class="col-12 text-center">
+                <button type="submit" class="btn btn-success btn-lg mt-3 reservation" name="reservation_form">Réserver</button>
+                </div>
             </form>
 
             <div class="social-links">
                 <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i> Github</a>
             </div>
         </div>
     </div>
@@ -165,5 +174,24 @@
 </footer>
 
 <script src="script.js"></script>
+<!-- Scripts  message-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+    emailjs.init("wqniUyMBdoAgG-pde"); // 🔁 Mets ta clé publique ici
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm("service_5yqr68o", "template_4nxt7gx", this)
+      .then(function(response) {
+        alert("Message envoyée avec succès !");
+        document.getElementById("contact-form").reset();
+      }, function(error) {
+        alert("Erreur lors de l'envoi : " + JSON.stringify(error));
+      });
+  });
+</script>
 </body>
 </html>
